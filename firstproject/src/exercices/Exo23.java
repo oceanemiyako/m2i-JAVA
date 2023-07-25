@@ -18,7 +18,5 @@ public class Exo23 {
                 max = tableau[indice];
             }
         }
-
-
     }
 }
