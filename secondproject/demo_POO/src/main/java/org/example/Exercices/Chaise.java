@@ -9,9 +9,9 @@ défaut)
  */
 public class Chaise {
 
-    public String materiaux;
-    public int nbPieds;
-    public String couleur;
+    private String materiaux;
+    private int nbPieds;
+    private String couleur;
 
     public double prix;
 
@@ -29,10 +29,10 @@ public class Chaise {
 
     @Override
     public String toString() {
-        return ":" +
-                "en " + materiaux + '\'' +
-                "avec " + nbPieds +
-                " de couleur '" + couleur + '\'' +
+        return "chaise" +
+                " en " + materiaux + '\'' +
+                " avec " + nbPieds + "\tpieds" +
+                " de couleur " + couleur + '\'' +
                 "à un prix de " + prix +
                 '.';
     }

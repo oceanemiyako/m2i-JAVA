@@ -7,9 +7,9 @@ public class ApplicationB {
         Chaise chaise2 = new Chaise("Bambou", 3 , "gris", 130.99);
         Chaise chaise3 = new Chaise("métal", 1 , "orange",76.25);
 
-        System.out.println("Je suis une chaise "+ chaise1);
-        System.out.println(" Je suis une chaise "+ chaise2);
-        System.out.println("Je suis une chaine " + chaise3);
+        System.out.println("Je suis une "+ chaise1);
+        System.out.println(" Je suis une "+ chaise2);
+        System.out.println("Je suis une " + chaise3);
 
 
 
