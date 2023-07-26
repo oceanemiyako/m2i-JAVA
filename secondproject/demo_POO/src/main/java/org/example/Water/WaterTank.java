@@ -15,8 +15,6 @@ public class WaterTank {
     private double emptyWeight; // poids à vide en anglais
     private double maxCapacity; // capacité max en anglais
     private double currentLevel; //niveau de remplissage en anglais
-    private double volume; // volume en volume
-
 
     private static double totalWaterVolume = 0;
 
