@@ -16,17 +16,22 @@ public class Joueur {
 
     public Joueur(String name) {
         this.name = name;
+        this.level = 1;
+        this.exp = 0;
     }
 
-    public void effectuerUneQuete(int exp) {
-       this.exp =+10;
+    public void effectuerUneQuete() {
+       this.exp +=10;
+       levelUp();
     }
 
-     public void augmenterniveau(int level){
-       level = 100;
-         level++;
+     private void levelUp(){
+       if(this.exp >= 100){
+           this.level++;
+           this.exp = 0;
+           System.out.println("Le joueur : " + name + "passe au niveau : " +level);
        }
-
+       }
 
     public String getName() {
         return name;
