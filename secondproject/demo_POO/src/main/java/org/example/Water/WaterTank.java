@@ -44,26 +44,32 @@ public void empty(double volume){     //vider
 }
 
     public static double getTotalWaterVolume() {
+
         return totalWaterVolume;
     }
 
     public double getEmptyWeight() {
+
         return emptyWeight;
     }
 
     public void setEmptyWeight(double emptyWeight) {
+
         this.emptyWeight = emptyWeight;
     }
 
     public double getMaxCapacity() {
+
         return maxCapacity;
     }
 
     public void setMaxCapacity(double maxCapacity) {
+
         this.maxCapacity = maxCapacity;
     }
 
     public double getCurrentLevel() {
+
         return currentLevel;
     }
 
