@@ -41,12 +41,12 @@ public class AppBibio {
         bibliotheque.afficherListeLivres();
 
 
-        //System.out.println("########");
+        System.out.println("########");
 
         // Supprimer Test
 
         //bibliotheque.supprimerLivre();
-       // bibliotheque.afficherListeLivres();
+        bibliotheque.afficherListeLivres();
 
     }
 }
