@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Bibliotheque {
 
-    //private Livre[] collection;
     private ArrayList<Livre> collectionLivres;
 
     public Bibliotheque() {
