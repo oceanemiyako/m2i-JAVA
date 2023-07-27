@@ -17,6 +17,8 @@ public class AppBibio {
 
         bibliotheque.ajouterLivre(livre3);
 
+        bibliotheque.ajouterLivre(new Livre("test", "Aurelie Dernier", 1000));
+
         System.out.println("#####");
 
         bibliotheque.afficherListeLivres();
@@ -37,6 +39,14 @@ public class AppBibio {
        // Supprimer un livre
         bibliotheque.supprimerLivre(livre2);
         bibliotheque.afficherListeLivres();
+
+
+        //System.out.println("########");
+
+        // Supprimer Test
+
+        //bibliotheque.supprimerLivre();
+       // bibliotheque.afficherListeLivres();
 
     }
 }

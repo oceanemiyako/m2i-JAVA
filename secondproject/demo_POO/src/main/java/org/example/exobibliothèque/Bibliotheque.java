@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 public class Bibliotheque {
 
-    private ArrayList<Livre> collectionLivres;
+    private ArrayList<Livre> Livres;
 
     public Bibliotheque() {
-        collectionLivres = new ArrayList<>();
+        Livres = new ArrayList<>();
     }
 
     public void ajouterLivre(Livre livre) {
-        collectionLivres.add(livre);
+        Livres.add(livre);
     }
 
     public void supprimerLivre(Livre livre) {
-        collectionLivres.remove(livre);
+        Livres.remove(livre);
     }
 
     public void afficherListeLivres() {
         System.out.println("Liste des livres dans la bibliothèque:");
-        for (Livre livre : collectionLivres) {
+        for (Livre livre : Livres) {
             livre.afficher();
         }
     }
