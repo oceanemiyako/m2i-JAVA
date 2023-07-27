@@ -16,7 +16,7 @@ public class Arbre extends Plante{
     }
 
     @Override
-    public  void display(){
+    public void display(){
         super.display();
         System.out.println("Circonférence du tronc : " + trunkcircumference + " m");
 
