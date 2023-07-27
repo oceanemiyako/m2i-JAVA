@@ -32,6 +32,12 @@ public class AppBibio {
         System.out.println("######");
 
         bibliotheque.afficherListeLivres();
+
+        System.out.println("#####");
+       // Supprimer un livre
+        bibliotheque.supprimerLivre(livre2);
+        bibliotheque.afficherListeLivres();
+
     }
 }
 
