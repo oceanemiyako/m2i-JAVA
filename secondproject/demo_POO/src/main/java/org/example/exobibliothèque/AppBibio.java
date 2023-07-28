@@ -1,5 +1,7 @@
 package org.example.exobibliothèque;
 
+import java.util.Iterator;
+
 public class AppBibio {
     public static void main(String[] args) {
 
@@ -19,6 +21,8 @@ public class AppBibio {
 
         bibliotheque.ajouterLivre(new Livre("test", "Aurelie Dernier", 1000));
 
+        bibliotheque.ajouterLivre(new Livre("Titre5", "Aurelie Dernier", 1000));
+
         System.out.println("#####");
 
         bibliotheque.afficherListeLivres();
@@ -29,6 +33,8 @@ public class AppBibio {
 
         bibliotheque.emprunterLivre(livre2);
 
+        System.out.println("#######");
+
         bibliotheque.retournerLivre(livre1);
 
         System.out.println("######");
@@ -37,6 +43,7 @@ public class AppBibio {
 
         System.out.println("#####");
        // Supprimer un livre
+
         bibliotheque.supprimerLivre(livre2);
         bibliotheque.afficherListeLivres();
 
@@ -45,8 +52,22 @@ public class AppBibio {
 
         // Supprimer Test
 
-        //bibliotheque.supprimerLivre();
+        String deletedBook5 = "test";
+        Iterator<Livre> iterator = bibliotheque.iterator();
+        while (iterator.hasNext()){
+            Livre livre = iterator.next();
+            if(livre.getTitre().equals(deletedBook5)){
+                iterator.remove();
+                break;
+            }
+        }
         bibliotheque.afficherListeLivres();
+
+        // Correction bonus
+
+        System.out.println("################# Emprunt du livre avec le titre5");
+        System.out.println(bibliotheque.empruntLivreParTitre(" toto "));
+        System.out.println(bibliotheque.empruntLivreParTitre(" Titre5 "));
 
     }
 }

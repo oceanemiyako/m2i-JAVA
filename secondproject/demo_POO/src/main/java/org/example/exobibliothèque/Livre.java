@@ -69,8 +69,8 @@ public class Livre {
        System.out.println(" nombre de Pages " + nbpages);
        System.out.println(" Emprunté " + estembrunte);
    }
-
    public void estembrunte(){
        estembrunte =! estembrunte;
    }
+
 }
