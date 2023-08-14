@@ -8,11 +8,12 @@ public class IHM {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-
-
         Hotel hotel = new Hotel();
+        Scanner scanner2;
+        int choice = scanner.nextInt();
+        scanner.nextLine();
 
-        while (true) {
+        do {
             System.out.println("1. Ajouter un client");
             System.out.println("2. Afficher la liste des clients");
             System.out.println("3. Afficher les réservations d'un client");
@@ -22,9 +23,7 @@ public class IHM {
             System.out.println("0. Quitter");
             System.out.print("Votre choix : ");
 
-            Scanner scanner2;
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+
 
             switch (choice) {
                 case 1:
@@ -72,6 +71,6 @@ public class IHM {
                 default:
                     System.out.println(" Invalid choice !");
             }
-        }
+        } while (choice != 0);
     }
 }
