@@ -61,6 +61,14 @@ public class Client {
         this.numberPhone = numberPhone;
     }
 
+    public List<CompteBancaire> getCompteBancaires() {
+        return compteBancaires;
+    }
+
+    public void setCompteBancaires(List<CompteBancaire> compteBancaires) {
+        this.compteBancaires = compteBancaires;
+    }
+
     @Override
     public String toString() {
         return "Client{" +

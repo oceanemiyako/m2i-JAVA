@@ -5,6 +5,7 @@ import org.example.model.Client;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -31,21 +32,36 @@ public class ClientDAO extends BaseDAO<Client> {
 
     @Override
     public boolean update(Client element) throws SQLException {
-        return false;
+        request = "UPDATE client first_name = ? last_name = ? where id = ?";
+        statement = _connection.prepareStatement(request, Statement.RETURN_GENERATED_KEYS);
+        statement.setString(1, element.getFirst_name());
+        statement.setString(2, element.getLast_name());
+        statement.setInt(3, element.getId());
+        int nbRows = statement.executeUpdate();
+        return nbRows == 1;
     }
 
     @Override
     public boolean delete(Client element) throws SQLException {
-        return false;
+        request = "DELETE from client  where id = ";
+        statement = _connection.prepareStatement(request);
+        statement.setInt(1, element.getId());
+        int nbRows = statement.executeUpdate();
+        return nbRows == 1;
     }
 
-    @Override
-    public Client get(int id) throws SQLException {
-        return null;
-    }
-
+     //TODO FINIR LA METHODE AFFICHER LE SOLDE
     @Override
     public List<Client> get() throws SQLException {
-        return null;
+        List<Client> result = new ArrayList<>();
+        request = "select pay from compte";
+        statement = _connection.prepareStatement(request);
+        resultSet = statement.executeQuery();
+
+        return result;
     }
+
+
+
+
 }
