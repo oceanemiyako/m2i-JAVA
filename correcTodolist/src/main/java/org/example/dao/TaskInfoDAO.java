@@ -1,13 +1,11 @@
 package org.example.dao;
 
-import org.example.model.Task;
 import org.example.model.TaskInfo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.time.LocalDate;
 
 public class TaskInfoDAO {
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_demo_postgres");
@@ -31,10 +29,11 @@ public class TaskInfoDAO {
     }
     private EntityManagerFactory entityManagerFactory;
     EntityManager entityManager = entityManagerFactory.createEntityManager();
-}
 
 
-    public LocalDate addDate(TaskInfo taskInfo) {
 
+    public void addDate(TaskInfo taskInfo) {
+return;
+    }
 
 }
