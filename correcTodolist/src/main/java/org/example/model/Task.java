@@ -12,7 +12,9 @@ public class Task {
     private Long id;
 
     private String title;
+
     private boolean completed;
+    @OneToOne(mappedBy = "task")
     private TaskInfo taskInfo;
     public Task() {                   // Constructeur Vide OBLIGE JPA
     }

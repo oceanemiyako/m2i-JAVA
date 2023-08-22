@@ -22,12 +22,20 @@ public class TaskInfo {
     public TaskInfo() {
     }
 
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public TaskInfo(String description, Task task, LocalDate date, int priority) {
+        this.description = description;
+        this.task = task;
+        this.date = date;
+        this.priority = priority;
     }
 
     public String getDescription() {
