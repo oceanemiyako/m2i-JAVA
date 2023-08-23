@@ -1,8 +1,6 @@
 package org.example.impl;
 
-import org.example.dao.TaskDAO;
 import org.example.dao.UserDAO;
-import org.example.model.Task;
 import org.example.model.User;
 
 import javax.persistence.EntityManager;
@@ -40,13 +38,13 @@ public class UserIDAOmpl implements UserDAO {
         }    }
 
     @Override
-    public List<User> getAllTaskUser() {
-
+    public List<User> getAllUser() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        List<User> Task = entityManager.createQuery("SELECT users FROM Task ",User.class).getResultList();
+        List<User> User = entityManager.createQuery("SELECT User FROM users ",User.class).getResultList();
         entityManager.close();
-        return Task;
-    }
+        return User;    }
+
+
 
     @Override
     public boolean deleteUserTask(Long UserId) {

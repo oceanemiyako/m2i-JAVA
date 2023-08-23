@@ -9,7 +9,8 @@ public interface UserDAO {
 
     public boolean addUser(User user);
 
-    public List<User> getAllTaskUser();
+    public List<User> getAllUser();
+
 
     public boolean deleteUserTask(Long UserId);
 
