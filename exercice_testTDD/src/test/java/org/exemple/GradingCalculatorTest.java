@@ -13,11 +13,13 @@ public class GradingCalculatorTest {
 
         GradingCalculator gradingCalculator = new GradingCalculator();
 
+        gradingCalculator.setScore(90);
+
+        gradingCalculator.setAttendancePercentage(70);
 
         int result = gradingCalculator.getAttendancePercentage();
 
-
-        Assertions.assertEquals(95,result);
+        Assertions.assertEquals(95,70);
 
     }
 
