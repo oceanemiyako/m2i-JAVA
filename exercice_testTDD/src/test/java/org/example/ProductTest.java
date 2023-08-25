@@ -1,5 +1,6 @@
 package org.example;
-
+import org.example.exception.MaxQualityException;
+import org.example.exception.NegativeQualityException;
 /*
 Un magasin possède un système informatisé pour connaître la date limite et la qualité des produits.
 Le système fonctionne de la sorte que chaque produit possède :
@@ -15,52 +16,115 @@ Les produits laitiers se dégradent en qualité deux fois plus vite que les prod
 Réaliser la méthode update en utilisant les TDD.
  */
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {
 
-    @Test
-    public void testQualityDecreasesBy1EachDay() {    // Test qualité produit
-        Product product = new Product("Product", 20, 10);
-        product.update();
-        assertEquals(9,product.getSellIn());
-        assertEquals(19, product.getQuality());
+
+    private Store store;
+
+    private Product product;
+
+
+    @BeforeEach
+    void setUp() {
+        store = new Store();
     }
 
     @Test
-    public void testQualityNeverNegative() {
-        Product product = new Product("Product", 0, 0);
-        product.update();
-        assertEquals(0, product.getQuality());
+    void testUpdateShouldDecreaseQuality() throws NegativeQualityException, MaxQualityException {
+        //Arrange
+        product = Product.builder().quality(10).sellIn(10).build();
+
+        //Act
+        store.update(product);
+
+        //Assert
+        Assertions.assertEquals(9, product.getQuality());
+
     }
 
     @Test
-    public void testQualityNeverMoreThan50() {
-        Product product = new Product("Product", 51,10);
-        product.update();
-        assertEquals(50, product.getQuality());
+    void testUpdateShouldDecreaseSellIn() throws NegativeQualityException, MaxQualityException {
+        //Arrange
+        product = Product.builder().quality(10).sellIn(10).build();
+
+        //Act
+        store.update(product);
+
+        //Assert
+        Assertions.assertEquals(9, product.getSellIn());
+
+    }
+
+
+    @Test
+    void testUpdateShouldDecreaseQualityTwiceWhenSellInIs0() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(0).quality(10).build();
+        store.update(product);
+        Assertions.assertEquals(8, product.getQuality());
     }
 
     @Test
-    public void testQualityDegradesTwiceAsFastAfterSellIn0() {
-        Product product = new Product("Product", 10,10);
-        product.update();
-        assertEquals(8, product.getQuality());
+    void testUpdateShouldRaiseNegativeQualityExceptionWhenQualityIsNegative() {
+        product = Product.builder().quality(-10).sellIn(5).build();
+        Assertions.assertThrowsExactly(NegativeQualityException.class, () -> {
+            store.update(product);
+        });
     }
 
     @Test
-    public void testAgedBrieIncreasesInQuality() {
-        Product agedBrie = new Product("Aged Brie", 10, 20);
-        agedBrie.update();
-        assertEquals(21, agedBrie.getQuality());
+    void testUpdateShouldDecreaseQualityOnceWhenSellInIs0AndQualityIs1() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(0).quality(1).build();
+        store.update(product);
+        Assertions.assertEquals(0, product.getQuality());
     }
 
     @Test
-    public void testDairyProductsDegradeTwiceAsFast() {
-        Product dairyProduct = new Product("Milk", 10, 20);
-        dairyProduct.update();
-        assertEquals(18, dairyProduct.getQuality());
+    void testUpdateShouldRaiseExceptionWhenQualityGT50() {
+        product = Product.builder().sellIn(10).quality(51).build();
+        Assertions.assertThrowsExactly(MaxQualityException.class,() -> {
+            store.update(product);
+        });
     }
+
+    @Test
+    void testUpdateShouldIncreaseQualityWhenProductNameIsBrie() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().type("laitier").name("brie vieilli")
+                .sellIn(5).quality(10).build();
+        store.update(product);
+        Assertions.assertEquals(11, product.getQuality());
+    }
+
+    @Test
+    void testUpdateShouldDecreaseQualityTwiceWhenTypeIsLaitier() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(5).quality(10).type("laitier").build();
+        store.update(product);
+        Assertions.assertEquals(8, product.getQuality());
+    }
+
+    @Test
+    void testUpdateShouldDecreaseQualityOnceWhenTypeIsLaitierAndQualityIs1() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(5).type("laitier").quality(1).build();
+        store.update(product);
+        Assertions.assertEquals(0, product.getQuality());
+    }
+
+    @Test
+    void testUpdateShouldDecreaseQualityFourTimeWhenTypeIsLaitierAndSellInIs0() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(0).quality(10).type("laitier").build();
+        store.update(product);
+        Assertions.assertEquals(6, product.getQuality());
+    }
+
+    @Test
+    void testUpdateShouldDecreaseQualityThreeTimeWhenTypeIsLaitierAndSellInIs0AndQualityIs3() throws NegativeQualityException, MaxQualityException {
+        product = Product.builder().sellIn(0).quality(3).type("laitier").build();
+        store.update(product);
+        Assertions.assertEquals(0, product.getQuality());
+    }
+
 }
 
